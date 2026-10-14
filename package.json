@@ -1,0 +1,14 @@
+{
+  "name": "skyway-self-purchase-payout-engine",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Versioned, idempotent payout engine for the 15% / 39% Self-Purchase Plan.",
+  "scripts": {
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

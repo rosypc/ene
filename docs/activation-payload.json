@@ -1,0 +1,33 @@
+{
+  "action": "activate-payout-plan",
+  "status": "ready-for-final-review",
+  "planVersion": "self-purchase-15-39-v1",
+  "effectiveFor": "new orders only",
+  "legacyPlan": {
+    "version": "legacy-5-percent",
+    "action": "retire-for-new-orders",
+    "historicEntries": "preserve"
+  },
+  "tiers": [
+    { "role": "buyer", "level": 0, "rateBps": 1500 },
+    { "role": "direct-sponsor", "level": 1, "rateBps": 1000 },
+    { "role": "upline", "level": 2, "rateBps": 400 },
+    { "role": "upline", "level": 3, "rateBps": 300 },
+    { "role": "upline", "level": 4, "rateBps": 300 },
+    { "role": "upline", "level": 5, "rateBps": 200 },
+    { "role": "upline", "level": 6, "rateBps": 150 },
+    { "role": "upline", "level": 7, "rateBps": 50 }
+  ],
+  "paymentProviders": ["paystack", "bank-transfer", "wallet"],
+  "verificationBoundary": "Inject provider-specific authoritative verifiers; never trust client-supplied status or amount.",
+  "requiredControls": [
+    "checkout plan/evidence freeze",
+    "payment confirmation before earnings",
+    "unique provider reference",
+    "unique earning idempotency key",
+    "append-only wallet ledger",
+    "cancellation/refund/chargeback reversal",
+    "failed bank proof produces no earnings"
+  ],
+  "activationGate": "Run migration, configure provider secrets and authoritative verifiers, execute controlled test report, reconcile the ledger, then set activePlanVersion in production configuration."
+}
